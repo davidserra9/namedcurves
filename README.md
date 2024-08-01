@@ -69,7 +69,13 @@ cd namedcurves
 mkdir pretrained
 ```
 
-The weights can be found [here].
+The weights can be found [here](https://github.com/davidserra9/namedcurves/releases/tag/v1.0). Alternatively, you can run:
+
+```
+cd namedcurves
+bash scripts/download_checkpoints.sh
+```
+
 
 ## Inference
 
