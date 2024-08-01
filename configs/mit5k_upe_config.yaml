@@ -1,0 +1,90 @@
+model:
+    ckpt_path: ~
+    backbone:
+        params:
+            input_channels: 3
+            output_channels: 3
+            encoder_dims: [4, 8, 16]
+            decoder_dims: [8, 4]
+    color_naming:
+        num_categories: 6
+    bezier_control_points_estimator:
+        params:
+            num_categories: ${model.color_naming.num_categories}
+            num_control_points: 10
+    local_fusion:
+        params:
+            att_in_dim: 3
+            num_categories: ${model.color_naming.num_categories}
+            max_pool_ksize1: 4
+            max_pool_ksize2: 2
+            encoder_dims: [8, 16]
+
+data:
+    train:
+        target: mit5k
+        params:
+            input_path: /home/dserrano/Documents/datasets/FiveK-UEGAN/input
+            target_path: /home/dserrano/Documents/datasets/FiveK-UEGAN/expertC_gt
+            img_ids_filepath: /home/dserrano/Workspace/DeepLPF/adobe5k_upe/images_train.txt
+            transform:
+                - type: RandomCrop
+                  params:
+                    size: [ 256, 256 ]
+                - type: Resize
+                  params:
+                    size: 256
+                - type: RandomHorizontalFlip
+                  params:
+                    p: 0.5
+                - type: RandomVerticalFlip
+                  params:
+                    p: 0.5
+
+    test:
+        target: mit5k
+        params:
+            input_path: /home/dserrano/Documents/datasets/FiveK-UEGAN/input
+            target_path: /home/dserrano/Documents/datasets/FiveK-UEGAN/expertC_gt
+            img_ids_filepath: /home/dserrano/Workspace/DeepLPF/adobe5k_upe/images_train.txt
+
+train:
+    cuda_visible_device: 0
+    batch_size: 8
+    epochs: 100
+    valid_every: 1
+    optimizer:
+        type: Adam
+        params:
+            lr: 1e-4
+            betas: [ 0.9, 0.999 ]
+            eps: 1e-8
+    criterion:
+        type: backbone-L2-SSIM
+        params:
+            alpha: 0.5
+            ssim_window_size: 5
+eval:
+    metrics:
+        - type: PSNR
+          params:
+              data_range: 1.0
+        - type: SSIM
+          params:
+              kernel_size: 11
+        - type: LPIPS
+          params:
+              net: vgg
+              version: 0.1
+        - type: deltaE00
+        - type: deltaEab
+    metric_to_save: PSNR
+
+
+
+
+
+
+
+
+
