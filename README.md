@@ -8,7 +8,7 @@ This repository is the official implementation of "NamedCurves: Learned Image En
 [David Serrano-Lozano](https://davidserra9.github.io/), [Luis Herranz](http://www.lherranz.org/), [Michael S. Brown](http://www.cse.yorku.ca/~mbrown/) and [Javier Vazquez-Corral](https://www.jvazquez-corral.net/)
 
 ## News 🚀
-- [Nov24]  Code update. We release the inference images for MIT5K-UEGAN and PPR10K.
+- [Nov24]  Code update. We release the inference images for MIT5K-UEGAN.
 - [July24] We realease the code and pretrained models of our paper.
 - [July24] Our paper NamedCurves is accepted to ECCV24!
 
