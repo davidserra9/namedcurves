@@ -7,13 +7,19 @@ This repository is the official implementation of "NamedCurves: Learned Image En
 
 [David Serrano-Lozano](https://davidserra9.github.io/), [Luis Herranz](http://www.lherranz.org/), [Michael S. Brown](http://www.cse.yorku.ca/~mbrown/) and [Javier Vazquez-Corral](https://www.jvazquez-corral.net/)
 
+## News 🚀
+- [Nov24]  Code update. We release the inference images for MIT5K-UEGAN and PPR10K.
+- [July24] We realease the code and pretrained models of our paper.
+- [July24] Our paper NamedCurves is accepted to ECCV24!
+
 ## TODO:
+- torch Dataset object for PPR10K
 - Create notebook
-- Create demo
+- Create gradio demo
 
 ## Method
 
-We propose NamedCurves, a learning-based image enhancement technique that decomposes the image into a small set of named colors. Our method learns to globally adjust the image for each specific named color via tone curves and then combines the images using and attention-based fusion mechanism to mimic spatial editing.
+We propose NamedCurves, a learning-based image enhancement technique that decomposes the image into a small set of named colors. Our method learns to globally adjust the image for each specific named color via tone curves and then combines the images using and attention-based fusion mechanism to mimic spatial editing. In contrast to other SOTA methods, NamedCurves allows interpretability thanks to computing a set of tone curves for each universal color name. 
 
 ![architecture](/assets/architecture-overview.png)
 
@@ -42,23 +48,45 @@ PPR10K contains 1,681 high-quality RAW portraits photos manually retouched by 3 
 
 ### Environment setup
 
-- We provide a conda env file that contains all the required dependencies.
+We provide a Conda environment file ```requirements.txt``` with all necessary dependencies, except for PyTorch and Torchvision. Follow the instructions below to set up the environment.
+
+First, create and activate the Conda environment:
 
 ```
-conda env create -f environment.yaml
-```
-
-- Following this, you can activte the conda environment with the command below.
-```
+conda create -n namedcurves python=3.8
 conda activate namedcurves
 ```
 
-- Or use virtual environment:
+Alternatively, you can set up a virtual environment:
 ```
 python3 -m venv venv
 source venv/bin/activate
+```
+
+Next, install PyTorch and Torchvision with the appropriate versions based on your CUDA and driver dependencies. Visit the [Pytorch Official Page](https://pytorch.org/get-started/previous-versions/) for specific installation commands. For example:
+
+```
+pip install torch==1.12.0+cu113 torchvision==0.13.0+cu113 --extra-index-url https://download.pytorch.org/whl/cu113
+```
+
+Once PyTorch is installed, you can install the remaining dependencies from the ```requirements.txt``` file:
+
+```
 pip install -r requirements.txt
 ```
+
+Alternatively, you can manually install the required packages:
+```
+pip install omegaconf matplotlib scipy scikit-image lpips torchmetrics
+```
+
+### Results
+
+We provide our results for the MIT5K dataset in the following format: aXXXX_Y_Z.png, where XXXX is the 4-digit file ID, Y is the PSNR value, and Z is the $\Delta E2000$ color difference of the image. All numeric values are rounded to two decimal places.
+
+|          | PSNR    | SSIM    | $\Delta E2000$ | Images  |
+| :-------- | :------: | :-------: | :--------------: | :-------: |
+| MIT5K    | 25.59   | 0.936   | 6.07           | [Link](https://cvcuab-my.sharepoint.com/:f:/g/personal/dserrano_cvc_uab_cat/EijObxqdogJHpNufwKKZE4ABI78-4iQnO78V2mHkzfs07A?e=tVTWAq)
 
 ### Pre-trained models
 
