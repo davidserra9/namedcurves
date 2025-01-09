@@ -9,12 +9,12 @@ from torchvision.transforms import functional as TF
 import torch
 
 class NamedCurves(nn.Module):
-    def __init__(self, configs: dict):
+    def __init__(self, configs: dict, device='cuda'):
         super().__init__()
         self.model_configs = configs
 
         self.backbone = Backbone(**configs['backbone']['params'])
-        self.color_naming = ColorNaming(num_categories=configs['color_naming']['num_categories'])
+        self.color_naming = ColorNaming(num_categories=configs['color_naming']['num_categories'], device=device)
         self.bcpe = BCPE(**configs['bezier_control_points_estimator']['params'])
         self.local_fusion = LocalFusion(**configs['local_fusion']['params'])
 

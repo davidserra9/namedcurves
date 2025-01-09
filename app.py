@@ -54,10 +54,10 @@ model_pt = "mit5k_uegan_psnr_25.59.pth"
 # parse config file
 config = OmegaConf.load(CONFIG)
 
-config = dict2namespace(config)
+device = "cuda" if torch.cuda.is_available() else "cpu"
 
-device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
-model = NamedCurves(config.model).to(device)
+config['train']['cuda_visible_device'] = device
+model = NamedCurves(config.model, device=device).to(device)
 model.load_state_dict(torch.load(model_pt)["model_state_dict"])
 
 def load_img(filename, norm=True,):
