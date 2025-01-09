@@ -10,7 +10,7 @@ importlib_resources
 kiwisolver
 lazy_loader
 lightning-utilities
-lpips==
+lpips
 matplotlib
 networkx
 numpy
