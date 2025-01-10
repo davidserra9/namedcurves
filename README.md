@@ -4,6 +4,8 @@ This repository is the official implementation of "NamedCurves: Learned Image En
 
 [![arXiv](https://img.shields.io/badge/ArXiv-Paper-B31B1B)](https://arxiv.org/abs/2407.09892)
 [![web](https://img.shields.io/badge/Project-Page-orange)](https://namedcurves.github.io/)
+[![Gradio](https://img.shields.io/badge/Huggingface-Demo-yellow)](https://huggingface.co/spaces/davidserra9/NamedCurves)
+
 
 [David Serrano-Lozano](https://davidserra9.github.io/), [Luis Herranz](http://www.lherranz.org/), [Michael S. Brown](http://www.cse.yorku.ca/~mbrown/) and [Javier Vazquez-Corral](https://www.jvazquez-corral.net/)
 
