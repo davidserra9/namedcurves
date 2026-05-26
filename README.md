@@ -1,23 +1,28 @@
-![thumbnail](/assets/thumbnail.png)
 
-This repository is the official implementation of "NamedCurves: Learned Image Enhancement via Color Naming" @ ECCV24.
+This repository is the official implementation of NamedCurves [ECCV'24] and NamedCurves+ [TPAMI'26].
 
-[![arXiv](https://img.shields.io/badge/ArXiv-Paper-B31B1B)](https://arxiv.org/abs/2407.09892)
 [![web](https://img.shields.io/badge/Project-Page-orange)](https://namedcurves.github.io/)
+
+### NamedCurves
+[![arXiv](https://img.shields.io/badge/ArXiv-Paper-B31B1B)](https://arxiv.org/abs/2407.09892)
+[![Paper](https://img.shields.io/badge/ECCV-Paper-B31B1B)](https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/08963.pdf)
+
+### NamedCurves+
+[![Paper](https://img.shields.io/badge/TPAMI-Paper-B31B1B)](https://ieeexplore.ieee.org/abstract/document/11511373)
 [![Gradio](https://img.shields.io/badge/Huggingface-Demo-yellow)](https://huggingface.co/spaces/davidserra9/NamedCurves)
 
 
 [David Serrano-Lozano](https://davidserra9.github.io/), [Luis Herranz](http://www.lherranz.org/), [Michael S. Brown](http://www.cse.yorku.ca/~mbrown/) and [Javier Vazquez-Corral](https://www.jvazquez-corral.net/)
 
 ## News 🚀
-- [Nov24]  Code update. We release the inference images for MIT5K-UEGAN.
+- [Apr26] NamedCurves+ accepted in IEEE TPAMI!
+- [Nov24] Code update. We release the inference images for MIT5K-UEGAN.
 - [July24] We realease the code and pretrained models of our paper.
 - [July24] Our paper NamedCurves is accepted to ECCV24!
 
 ## TODO:
+- Update code with NamedCurves+
 - torch Dataset object for PPR10K
-- Create notebook
-- Create gradio demo
 
 ## Method
 
